@@ -1,0 +1,19 @@
+---
+layout: nil
+---
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+<channel>
+<title>{{ site.title }}</title>
+<link>{{ site.url }}/appcast.xml</link>
+<description>{{ site.description }}</description>
+<language>{{ site.lang }}</language>
+{% for post in site.posts %}
+<item>
+  <title>Version {{ post.version }} {% if post.title %}({{ post.title }}){% endif %}</title>
+  <sparkle:releaseNotesLink>{{ site.url }}{{ post.url }}</sparkle:releaseNotesLink>
+  <pubDate>{{ post.time | date_to_xmlschema }}</pubDate>
+  <enclosure url="{{ site.file_host }}/{{ post.file }}" sparkle:version="{{ post.bundle }}" sparkle:shortVersionString="{{ post.version }}" length="{{ post.file_size }}" type="application/octet-stream" sparkle:dsaSignature="{{ post.signature }}"/>
+</item>
+{% endfor %}
+</channel>
+</rss>
