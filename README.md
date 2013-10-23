@@ -101,6 +101,7 @@ Change the following lines. The rest is optional.
     file_host: http://download.project.com
     title: Your Project for Mac Updates
     description: This feed contains application updates.
+    google_analytics: UA-12345678-90
 
 Change your `index.html` page title in `index.md`.
 

@@ -2,12 +2,13 @@ url: http://update.project.com
 file_host: http://download.project.com
 title: Your Project for Mac Updates
 description: This feed contains application updates.
+google_analytics: UA-12345678-90 # Definitely change this
 lang: en
 exclude: ["Rakefile", "glow.rb", "download", "Gemfile", "Gemfile.lock", "README.md", "LICENSE", "_config-sample.yml"]
 destination: "_site/update" # Remember to change this value in the Rakefile as well
 permalink: /:title
 
-# Spark settings
+# Glow settings
 download_path: "_site/download" # Don't add a trailing /
 binary_path: ".." # Don't add a trailing /
 beta_indicator: b # Should appear after the short version number: 0.3b
