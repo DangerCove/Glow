@@ -18,6 +18,7 @@ end
 desc 'Setup the basics'
 task :setup do
   sh 'bundle install'
+  sh 'mkdir -p _posts/'
   sh 'mkdir -p _site/download'
   puts "---\nThat's it. Now add some files and type: rake add" 
 end

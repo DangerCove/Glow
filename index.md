@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Tapetrap for Mac Updates
+title: Your Project for Mac Updates
 ---
 
 <ol class="updates">

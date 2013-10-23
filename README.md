@@ -102,6 +102,8 @@ Change the following lines. The rest is optional.
     title: Your Project for Mac Updates
     description: This feed contains application updates.
 
+Change your `index.html` page title in `index.md`.
+
 # Adding Updates
 
 ## Regular Update
@@ -129,7 +131,8 @@ well. It should look something like this.
 
     * Bugfixes
 
-Enter your release notes where it says `* Bugfixes`.
+Enter your release notes where it says `* Bugfixes` and add a title if you
+want.
 
 ## Beta Update
 
