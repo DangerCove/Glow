@@ -63,11 +63,11 @@ file_size = File.size(file_path)
 
 # Generate signature
 unless File.exist?("#{binary_path}/sign_update.rb")
-  puts "couldn't find #{binary_path}/sign_update.rb."
+  puts "Couldn't find #{binary_path}/sign_update.rb."
   exit
 end
 unless File.exist?("#{binary_path}/dsa_priv.pem")
-  puts "couldn't find #{binary_path}/dsa_priv.pem."
+  puts "Couldn't find #{binary_path}/dsa_priv.pem."
   exit
 end
 signature = `ruby #{binary_path}/sign_update.rb #{file_path} #{binary_path}/dsa_priv.pem`.strip!
