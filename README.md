@@ -168,6 +168,8 @@ Things I'd like to add:
 
 * Deployment options.
 * Automatic zipping or dmg-creating (using [Dropdmg](http://c-command.com/dropdmg/) for instance).
+* Add the build number after the beta indicator to allow for multiple beta builds 
+for one version number, e.g. Tapetrap-v0.3b10.zip and Tapetrap-v0.3b11.zip.
 
 # License
 
