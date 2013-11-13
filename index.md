@@ -1,6 +1,5 @@
 ---
 layout: page
-title: Your Project for Mac Updates
 ---
 
 <ol class="updates">
