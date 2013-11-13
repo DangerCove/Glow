@@ -150,6 +150,8 @@ Run `rake run` and open `http://localhost:4000/`.
 
 Working on this. I'm rsyncing the contents of `_site` to my server. Would love
 to be able to have different deploy options.
+
+For now, running `rake deploy` will execute a script called `deploy.sh` inside the `_site` folder.
   
 # Known Issues
 

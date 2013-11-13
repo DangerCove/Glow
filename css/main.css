@@ -64,13 +64,13 @@ body {
     padding: 1em;
     margin: 0;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", Arial;
-    font-size: 16px;
+    font-size: 14px;
     color: #333;
 }
 
 h1, h2, h3, h4, h5, h6 { font-family: "HelveticaNeue", "Helvetica Neue", Arial; font-weight: normal; margin: 0 0 .5em; }
-h1 { font-size: 28px; }
-h2 { font-size: 22px; }
+h1 { font-size: 22px; }
+h2 { font-size: 18px; }
 
 .updates { list-style: none; padding: 0; margin: 0; }
 .updates > li { padding: 20px 0 0; margin: 20px 0 0; border-top: #ddd 1px solid; }

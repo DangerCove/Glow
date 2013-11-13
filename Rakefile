@@ -23,6 +23,15 @@ task :setup do
   puts "---\nThat's it. Now add some files and type: rake add" 
 end
 
+desc 'Deploy the site'
+task :deploy do
+  if File.exist?('_site/deploy.sh')
+    sh 'cd _site && ./deploy.sh'
+  else
+    puts "First, create a deploy.sh script in _site/"
+  end
+end
+
 def jekyll(opts = '')
   sh 'rm -rf _site/update'
   sh 'bundle exec jekyll ' + opts
