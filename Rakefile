@@ -25,5 +25,5 @@ end
 
 def jekyll(opts = '')
   sh 'rm -rf _site/update'
-  sh 'jekyll ' + opts
+  sh 'bundle exec jekyll ' + opts
 end
