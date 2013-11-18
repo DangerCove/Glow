@@ -42,8 +42,7 @@ releases.
 
 # Status
 
-I've tested the project locally and will use it in production for my new project called
-[Tapetrap](http://www.dangercove.com/tapetrap).
+Glow powers release notes and automatic updates for all [Danger Cove](http://www.dangercove.com) apps.
 
 # Setup
 
