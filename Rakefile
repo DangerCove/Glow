@@ -24,7 +24,7 @@ task :setup do
 end
 
 desc 'Deploy the site'
-task :deploy do
+task :deploy => [:build] do
   if File.exist?('_site/deploy.sh')
     sh 'cd _site && ./deploy.sh'
   else
