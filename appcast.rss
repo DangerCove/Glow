@@ -4,7 +4,7 @@ layout: nil
 <rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
 <channel>
 <title>{{ site.title }}</title>
-<link>{{ site.url }}/appcast.xml</link>
+<link>{{ site.url }}/appcast.rss</link>
 <description>{{ site.description }}</description>
 <language>{{ site.lang }}</language>
 {% for post in site.posts %}
