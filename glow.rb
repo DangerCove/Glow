@@ -32,11 +32,6 @@ short_version = plist['CFBundleShortVersionString']
 bundle_version = plist['CFBundleVersion']
 is_beta = short_version.match(/#{beta_indicator}$/)
 
-# Retrieve app file info
-file_created = Time.parse(`mdls -name kMDItemContentCreationDate -raw #{app_path}`)
-date = file_created.strftime('%Y-%m-%d')
-time = file_created
-
 # Set filename and path
 filename = "#{app_name}-v#{short_version}"
 file_path = nil
@@ -71,6 +66,11 @@ unless File.exist?("#{binary_path}/dsa_priv.pem")
   exit
 end
 signature = `ruby #{binary_path}/sign_update.rb #{file_path} #{binary_path}/dsa_priv.pem`.strip!
+
+# Retrieve app file info
+file_created = Time.parse(`mdls -name kMDItemContentCreationDate -raw #{file_path}`)
+date = file_created.strftime('%Y-%m-%d')
+time = file_created
 
 # Store information in new post
 File.open("#{post_path}/#{date}-v#{short_version}.md", 'w') { |file|
