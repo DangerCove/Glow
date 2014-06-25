@@ -1,4 +1,4 @@
-task :default => :run
+task :default => :preview
 
 desc 'Add updates to site'
 task :add do
@@ -11,7 +11,7 @@ task :build do
 end
 
 desc 'Build site, start server and watch for changes'
-task :run do
+task :preview do
   jekyll 'serve --watch'
 end
 

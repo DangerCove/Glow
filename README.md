@@ -143,7 +143,7 @@ You'll notice after generating a post, it will have an extra property: `beta: tr
 
 ## Previewing the Updates
 
-Run `rake run` and open `http://localhost:4000/`.
+Run `rake preview` and open `http://localhost:4000/`.
 
 ## Deploying
 
