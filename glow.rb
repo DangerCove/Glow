@@ -57,15 +57,10 @@ end
 file_size = File.size(file_path)
 
 # Generate signature
-unless File.exist?("#{binary_path}/sign_update.rb")
-  puts "Couldn't find #{binary_path}/sign_update.rb."
-  exit
+if File.exist?("#{binary_path}/sign_update.rb") and File.exist?("#{binary_path}/dsa_priv.pem")
+  puts "Signing update."
+  signature = `ruby #{binary_path}/sign_update.rb #{file_path} #{binary_path}/dsa_priv.pem`.strip!
 end
-unless File.exist?("#{binary_path}/dsa_priv.pem")
-  puts "Couldn't find #{binary_path}/dsa_priv.pem."
-  exit
-end
-signature = `ruby #{binary_path}/sign_update.rb #{file_path} #{binary_path}/dsa_priv.pem`.strip!
 
 # Retrieve app file info
 file_created = Time.parse(`mdls -name kMDItemContentCreationDate -raw #{file_path}`)
@@ -80,7 +75,7 @@ File.open("#{post_path}/#{date}-v#{short_version}.md", 'w') { |file|
   file.write("time: #{time}\n")
   file.write("version: #{short_version}\n")
   file.write("bundle: #{bundle_version}\n")
-  file.write("signature: #{signature}\n")
+  file.write("signature: #{signature}\n") unless signature.nil? or signature.empty?
   file.write("file_size: #{file_size}\n")
   file.write("file: #{filename}.#{file_format}\n")
   if is_beta

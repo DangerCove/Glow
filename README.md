@@ -32,7 +32,7 @@ from new releases.
 * Glow parses the `Info.plist` of your app bundle for its version number, build
 number and creation date.
 * Glow checks if a compressed update file exists.
-* Glow generates a Sparkle signature using your private key.
+* Glow optionally generates a Sparkle signature using your private key.
 * Glow checks the compressed update's file size.
 * Glow generates a new Jekyll-compatible file with the information above.
 * Glow creates (or updates) a symbolic link called `YourApp-latest.zip/dmg`
@@ -51,12 +51,14 @@ Glow powers release notes and automatic updates for all [Danger Cove](http://www
 Create a new folder and lay it out like this:
 
     .
-    |- dsa_priv.pem
-    |- sign_update.rb
+    |- dsa_priv.pem (optional)
+    |- sign_update.rb (optional)
     |- YourApp.app
 
 `sign_update.rb` is included with Sparkle and `dsa_priv.pem` is generated using
-`generate_keys.rb`, also included with Sparkle.
+`generate_keys.rb`, also included with Sparkle. Signatures are optional but
+recommended, especially for unsigned apps. For signed apps, Sparkle will check
+if the identity of the update matches the original's.
 
 Enter your newly created folder and clone glow.
 
