@@ -7,13 +7,12 @@ layout: nil
 <link>{{ site.url }}/appcast-beta.rss</link>
 <description>{{ site.description }}</description>
 <language>{{ site.lang }}</language>
-{% for post in site.posts %}
-<item>
+{% for post in site.posts %}<item>
   <title>Version {{ post.version }} {% if post.title %}({{ post.title }}){% endif %}</title>
-  <sparkle:releaseNotesLink>{{ site.url }}{{ post.url }}</sparkle:releaseNotesLink>
+  <sparkle:releaseNotesLink>{{ site.url }}{{ post.url }}</sparkle:releaseNotesLink>{% if post.min_system_version %}
+  <sparkle:minimumSystemVersion>{{ post.min_system_version }}</sparkle:minimumSystemVersion>{% endif %}
   <pubDate>{{ post.time | date_to_xmlschema }}</pubDate>
   <enclosure url="{{ site.file_host }}/{{ post.file }}" sparkle:version="{{ post.bundle }}" sparkle:shortVersionString="{{ post.version }}" length="{{ post.file_size }}" type="application/octet-stream" sparkle:dsaSignature="{{ post.signature }}"/>
-</item>
-{% endfor %}
+</item>{% endfor %}
 </channel>
 </rss>

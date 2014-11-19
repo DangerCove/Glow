@@ -30,6 +30,7 @@ end
 plist = Plist::parse_xml("#{app_path}/Contents/Info.plist")
 short_version = plist['CFBundleShortVersionString']
 bundle_version = plist['CFBundleVersion']
+min_system_version = plist['LSMinimumSystemVersion']
 is_beta = short_version.match(/#{beta_indicator}$/)
 
 # Set filename and path
@@ -75,6 +76,7 @@ File.open("#{post_path}/#{date}-v#{short_version}.md", 'w') { |file|
   file.write("time: #{time}\n")
   file.write("version: #{short_version}\n")
   file.write("bundle: #{bundle_version}\n")
+  file.write("min_system_version: #{min_system_version}\n")  
   file.write("signature: #{signature}\n") unless signature.nil? or signature.empty?
   file.write("file_size: #{file_size}\n")
   file.write("file: #{filename}.#{file_format}\n")
