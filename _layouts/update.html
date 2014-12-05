@@ -3,6 +3,8 @@ layout: default
 ---
 
 <h1>Version {{ page.version }}{% if page.title %} ({{ page.title }}){% endif %}</h1>
+{% if page.beta %}<p class="build">Build {{ page.bundle }}</p>
+<p class="warning"><strong>Beta build: use at your own risk.</strong></p>{% endif %}
 <p class="date">{{ page.date | date: "%-d %B %Y" }}</p>
 
 {{ content }}

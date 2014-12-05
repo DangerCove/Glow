@@ -7,7 +7,7 @@ require 'time'
 cnf = YAML::load(File.open("_config.yml"))
 
 # Settings
-post_path = "_posts"
+posts_path = "_posts"
 download_path = cnf['download_path'] == nil ? "_site/download" : cnf['download_path'] 
 binary_path = cnf['binary_path'] == nil ? ".." : cnf['binary_path']
 beta_indicator = cnf['beta_indicator'] == nil ? "b" : cnf['beta_indicator']
@@ -32,9 +32,18 @@ short_version = plist['CFBundleShortVersionString']
 bundle_version = plist['CFBundleVersion']
 min_system_version = plist['LSMinimumSystemVersion']
 is_beta = short_version.match(/#{beta_indicator}$/)
+if is_beta
+  full_version = "#{short_version}#{bundle_version}"
+else
+  full_version = "#{short_version}"
+end
 
 # Set filename and path
-filename = "#{app_name}-v#{short_version}"
+if is_beta
+  filename = "#{app_name}-v#{full_version}"
+else
+  filename = "#{app_name}-v#{full_version}"
+end
 file_path = nil
 file_format = nil
 Dir["#{download_path}/#{filename}*"].each do |path|
@@ -49,8 +58,8 @@ if file_path == nil
 end
 
 # Check if the update has already been added
-if Dir["#{post_path}/*v#{short_version}*"].length > 0
-  puts "#{app_name} version #{short_version} has already been added."
+if Dir["#{posts_path}/*v#{full_version}.md"].length > 0
+  puts "#{app_name} version #{full_version} has already been added."
   exit
 end
 
@@ -68,8 +77,15 @@ file_created = Time.parse(`mdls -name kMDItemContentCreationDate -raw #{file_pat
 date = file_created.strftime('%Y-%m-%d')
 time = file_created
 
+# Setup post filename
+if is_beta
+  post_filename = "#{date}-v#{full_version}.md"
+else
+  post_filename = "#{date}-v#{full_version}.md"
+end
+
 # Store information in new post
-File.open("#{post_path}/#{date}-v#{short_version}.md", 'w') { |file|
+File.open("#{posts_path}/#{post_filename}", 'w') { |file|
   file.write("---\n")
   file.write("layout: update\n")
   file.write("title: \n")
@@ -86,7 +102,11 @@ File.open("#{post_path}/#{date}-v#{short_version}.md", 'w') { |file|
   file.write("---\n\n")
   file.write("* Bugfix\n") 
 
-  puts "#{app_name} v#{short_version} has been added."
+  if is_beta
+    puts "#{app_name} v#{full_version} has been added."
+  else 
+    puts "#{app_name} v#{full_version} has been added."
+  end
 }
 
 # Add a symbolic link to the latest version
