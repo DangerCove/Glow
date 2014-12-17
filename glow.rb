@@ -42,7 +42,7 @@ end
 filename = "#{app_name}-v#{full_version}"
 file_path = nil
 file_format = nil
-Dir["#{download_path}/#{app_name}*"].each do |path|
+Dir["#{download_path}/#{filename}*"].each do |path|
   file_path = path
   file_format = File.extname(path).sub(".","")
   break
