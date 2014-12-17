@@ -39,14 +39,10 @@ else
 end
 
 # Set filename and path
-if is_beta
-  filename = "#{app_name}-v#{full_version}"
-else
-  filename = "#{app_name}-v#{full_version}"
-end
+filename = "#{app_name}-v#{full_version}"
 file_path = nil
 file_format = nil
-Dir["#{download_path}/#{filename}*"].each do |path|
+Dir["#{download_path}/#{app_name}*"].each do |path|
   file_path = path
   file_format = File.extname(path).sub(".","")
   break
