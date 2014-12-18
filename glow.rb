@@ -88,7 +88,7 @@ File.open("#{posts_path}/#{post_filename}", 'w') { |file|
   file.write("time: #{time}\n")
   file.write("version: #{short_version}\n")
   file.write("bundle: #{bundle_version}\n")
-  file.write("min_system_version: #{min_system_version}\n")  
+  file.write("min_system_version: \"#{min_system_version}\"\n")  
   file.write("signature: #{signature}\n") unless signature.nil? or signature.empty?
   file.write("file_size: #{file_size}\n")
   file.write("file: #{filename}.#{file_format}\n")
