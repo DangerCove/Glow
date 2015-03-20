@@ -4,8 +4,8 @@
         <meta charset="utf-8">
         <title>{% if page.title %}{{ site.title }} | {% if page.version %}v{{ page.version }}{% else %}{{ page.title }}{% endif %}{% else %}{{ site.title }}{% endif %}</title>
 
-        <link rel="stylesheet" href="/css/normalize.min.css">
-        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="{{ site.url }}/css/normalize.min.css">
+        <link rel="stylesheet" href="{{ site.url }}/css/main.css">
 
         <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.url }}/appcast.rss">
         <link rel="alternate" type="application/rss+xml" title="{{ site.title }} | Beta" href="{{ site.url }}/appcast-beta.rss">

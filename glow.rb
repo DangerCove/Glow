@@ -65,11 +65,11 @@ file_size = File.size(file_path)
 # Generate signature
 if File.exist?("#{binary_path}/sign_update.rb") and File.exist?("#{binary_path}/dsa_priv.pem")
   puts "Signing update."
-  signature = `ruby #{binary_path}/sign_update.rb #{file_path} #{binary_path}/dsa_priv.pem`.strip!
+  signature = `ruby #{binary_path}/sign_update.rb "#{file_path}" "#{binary_path}/dsa_priv.pem"`.strip!
 end
 
 # Retrieve app file info
-file_created = Time.parse(`mdls -name kMDItemContentCreationDate -raw #{file_path}`)
+file_created = Time.parse(`mdls -name kMDItemContentCreationDate -raw "#{file_path}"`)
 date = file_created.strftime('%Y-%m-%d')
 time = file_created
 
@@ -107,6 +107,6 @@ File.open("#{posts_path}/#{post_filename}", 'w') { |file|
 
 # Add a symbolic link to the latest version
 unless is_beta
-  `cd #{download_path} && rm #{app_name}-latest.#{file_format} ; ln -s #{filename}.#{file_format} #{app_name}-latest.#{file_format}`
+  `cd #{download_path} && rm "#{app_name}-latest.#{file_format}" ; ln -s "#{filename}.#{file_format}" "#{app_name}-latest.#{file_format}"`
   puts "Added a symbolic link from #{filename}.#{file_format} to #{app_name}-latest.#{file_format}"
 end
