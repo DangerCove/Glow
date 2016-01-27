@@ -1,3 +1,3 @@
 source 'https://rubygems.org'
-gem 'jekyll'
-gem 'plist'
+gem 'jekyll', '~> 1'
+gem 'plist', '~> 3'
