@@ -12,3 +12,4 @@ permalink: /:title
 download_path: "_site/download" # Don't add a trailing /
 binary_path: ".." # Don't add a trailing /
 beta_indicator: ß # Should appear after the short version number: 0.3ß
+require_signing: true # Should the app be signed using a private key

@@ -11,6 +11,7 @@ posts_path = "_posts"
 download_path = cnf['download_path'] == nil ? "_site/download" : cnf['download_path'] 
 binary_path = cnf['binary_path'] == nil ? ".." : cnf['binary_path']
 beta_indicator = cnf['beta_indicator'] == nil ? "b" : cnf['beta_indicator']
+require_signing = cnf['require_signing'] == nil ? true : cnf['require_signing']
 
 # Discover app name
 app_name = nil
@@ -66,6 +67,9 @@ file_size = File.size(file_path)
 if File.exist?("#{binary_path}/sign_update.rb") and File.exist?("#{binary_path}/dsa_priv.pem")
   puts "Signing update."
   signature = `ruby #{binary_path}/sign_update.rb "#{file_path}" "#{binary_path}/dsa_priv.pem"`.strip!
+elsif require_signing
+  puts "Signing is required. Please provide the following files:\n\n#{binary_path}/sign_update.rb\n#{binary_path}/dsa_priv.pem"
+  exit
 end
 
 # Retrieve app file info
